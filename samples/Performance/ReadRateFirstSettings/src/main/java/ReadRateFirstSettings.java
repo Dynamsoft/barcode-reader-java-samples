@@ -51,13 +51,11 @@ public class ReadRateFirstSettings {
         
 	    // Apply the new settings to the instance
 	    dbr.updateRuntimeSettings(sts);
-	    
-	    //dbr.outputSettingsToFile("D:/ReadRateFirstTemplate.json", "tpl_rfs");
 	}
 	
 	private static void configReadRateFirstByTemplate(BarcodeReader dbr) throws BarcodeReaderException {
 		// Compared with PublicRuntimeSettings, parameter templates have a richer ability to control parameter details.
-		// Please refer to the parameter explanation in "ReadRateFirstTemplate.json" to understand how to control speed first.
+		// Please refer to the parameter explanation in "ReadRateFirstTemplate.json" to understand how to control read rate first.
 		dbr.initRuntimeSettingsWithFile("ReadRateFirstTemplate.json", EnumConflictMode.CM_OVERWRITE);
 	}
 	
