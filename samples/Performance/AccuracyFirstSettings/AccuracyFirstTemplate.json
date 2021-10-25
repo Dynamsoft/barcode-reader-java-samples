@@ -1,0 +1,32 @@
+{
+    "ImageParameter" : {
+        // The template name, must be unique. Passed into the last parameter of decode* interfaces.
+        "Name" : "tpl_afs",	
+        // 1. Set barcode format in group 1 & group 2. The more precise the barcode format is set, the higher the accuracy.
+        "BarcodeFormatIds" : [ "BF_ONED" ],	
+        "BarcodeFormatIds_2" : null,			
+        "FormatSpecificationNameArray" : ["FS_Filter"]
+    },
+    "FormatSpecificationArray": [{
+        "Name": "FS_Filter",
+        // 2. Filter by module size of barcode. It is used to exclude small-module barcodes.
+        "ModuleSizeRangeArray": [			
+            {
+                "MinValue": 2,
+                "MaxValue": 20
+            }
+            ],
+        // 3. Filter by length of barcode text. The more precise the barcode text length is set, the higher the accuracy.
+        "BarcodeTextLengthRangeArray" : [	
+            {
+                "MaxValue" : 20,
+                "MinValue" : 6
+            }
+        ],
+        // 4. Filter by minimal confidence of the decoded barcode. The greater the confidence, the higher the accuracy.
+        "MinResultConfidence" : 30,	
+        // 5. Filter by regex pattern of barcode text. 
+        "BarcodeTextRegExPattern" : "^[a-zA-Z0-9]+$"	
+    }],
+    "Version" : "3.0"
+}
