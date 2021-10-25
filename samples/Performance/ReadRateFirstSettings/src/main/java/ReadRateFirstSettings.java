@@ -57,7 +57,7 @@ public class ReadRateFirstSettings {
 	
 	private static void configReadRateFirstByTemplate(BarcodeReader dbr) throws BarcodeReaderException {
 		// Compared with PublicRuntimeSettings, parameter templates have a richer ability to control parameter details.
-		// Please refer to the parameter explanation in "SpeedFirstTemplate.json" to understand how to control speed first.
+		// Please refer to the parameter explanation in "ReadRateFirstTemplate.json" to understand how to control speed first.
 		dbr.initRuntimeSettingsWithFile("ReadRateFirstTemplate.json", EnumConflictMode.CM_OVERWRITE);
 	}
 	
@@ -113,7 +113,7 @@ public class ReadRateFirstSettings {
 			    // 3.b config through parameters template
 		    	configReadRateFirstByTemplate(dbr);
                 
-		    	// 4.b Decode barcodes from an image file by template. The second parameter value "tpl_sfs" is the name of the template.
+		    	// 4.b Decode barcodes from an image file by template.
 		    	results = dbr.decodeFile(fileName, "");
 		    	
 		    	// 5.b Output the barcode format and barcode text.
