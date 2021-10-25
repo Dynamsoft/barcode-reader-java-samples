@@ -128,7 +128,7 @@ public class ImageDecoding {
 	private static int chooseNumber() {
         System.out.println();
         System.out.println(">> Choose a number for diffent decoding interfaces:");
-        System.out.println("   0£º exit program");
+        System.out.println("   0: exit program");
         System.out.println("   1: decodeFile");
         System.out.println("   2: decodeBase64String");
         System.out.println("   3: decodeBufferedImage");
@@ -224,7 +224,7 @@ public class ImageDecoding {
 	            	case 6: {
 	            		ImageData img = cvtToImageData(filePath);
 	            		
-	            		//3.5 Decoding with raw buffer
+	            		//3.6 Decoding with raw buffer
 	            		results = dbr.decodeBuffer(img.bytes, img.width, img.height, img.stride, img.format, "");
 	            		break;
 	            	}
