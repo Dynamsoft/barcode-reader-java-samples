@@ -83,8 +83,8 @@ public class AccuracyFirstSettings {
 			    // 3.b config through parameters template
 		    	configAccuracyFirstByTemplate(dbr);
 		    	
-		    	// 4.b Decode barcodes from an image file by template. The second parameter value "tpl_afs" is the name of the template.
-		    	results = dbr.decodeFile(fileName, "tpl_afs");
+		    	// 4.b Decode barcodes from an image file by template. 
+		    	results = dbr.decodeFile(fileName, "");
 		    	
 		    	// 5.b Output the barcode format and barcode text.
 		    	outputResults(results);
