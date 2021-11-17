@@ -9,7 +9,7 @@ public class ReadDPMBarcode {
 
         // Set expected barcode formats.
         // Generally, the most common dpm barcode is datamatrix or qrcode
-        sts.barcode_format_ids = EnumBarcodeFormat.BF_DATAMATRIX | EnumBarcodeFormat.BF_QR_CODE;
+        sts.barcodeFormatIds = EnumBarcodeFormat.BF_DATAMATRIX | EnumBarcodeFormat.BF_QR_CODE;
 
         // Set grayscale transformation modes.
         // DPM barcodes may be dark and printed on the light background, or it may be light and printed on the dark background.
