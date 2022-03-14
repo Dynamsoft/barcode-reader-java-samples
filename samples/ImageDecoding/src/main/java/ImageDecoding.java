@@ -156,14 +156,10 @@ public class ImageDecoding {
 	public static void main(String[] args) {
 		try {
 			
-			// 1.Initialize license.
-            // The organization id 200001 here will grant you a free public trial license. Note that network connection is required for this license to work.
-            // If you want to use an offline license, please contact Dynamsoft Support: https://www.dynamsoft.com/company/contact/
-            // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=java
-			DMDLSConnectionParameters para = BarcodeReader.initDLSConnectionParameters();
-			para.organizationID = "200001";
-			
-			BarcodeReader.initLicenseFromDLS(para);
+		    // 1.Initialize license.
+            	    // The organization id 200001 here will grant you a free public trial license. Note that network connection is required for this license to work.
+            	    // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=java
+		    BarcodeReader.initLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9");
 			
 		    // 2.Create an instance of Dynamsoft Barcode Reader.
 		    BarcodeReader dbr = new BarcodeReader();
