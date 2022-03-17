@@ -25,7 +25,7 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 ## License
 
-The library requires a license to work, you use the API InitLicense to initialize license key and activate the SDK.
+The library requires a license to work, you use the API initLicense to initialize license key and activate the SDK.
 
 These samples use a <a href="https://www.dynamsoft.com/license-server/docs/about/terms.html?ver=latest&product=dbr&utm_source=samples&package=java#public-trial-license" target="_blank">free public trial license</a>. Note that network connection is required for this license to work.
 
