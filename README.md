@@ -4,9 +4,10 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 ## Requirements
 - Operating systems:
-  - Windows 7, 8, 10
-  - Windows Server 2003, 2008, 2008 R2, 2012
+  - Windows 7, 8, 10, 11
+  - Windows Server 2003, 2008, 2008 R2, 2012, 2016, 2019, 2022
   - Linux x64 (Ubuntu 14.04.4+ LTS, Debian 8+, etc.)
+  - Linux arm 64bit
   - macOS x64 10.12+
 - JDK 1.7 and above
 - Environment: Eclipse 3.7 and above
@@ -24,8 +25,11 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 ## License
 
-- If you want to use an offline license, please contact [Dynamsoft Support](https://www.dynamsoft.com/company/contact/)
-- You can also request a 30-day trial license in the [customer portal](https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=java)
+The library requires a license to work, you use the API InitLicense to initialize license key and activate the SDK.
+
+These samples use a <a href="https://www.dynamsoft.com/license-server/docs/about/terms.html?ver=latest&product=dbr&utm_source=samples&package=java#public-trial-license" target="_blank">free public trial license</a>. Note that network connection is required for this license to work.
+
+You can also request a 30-day trial license from <a href="https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=java" target="_blank">Customer Portal</a>
 
 ## Contact Us
 
