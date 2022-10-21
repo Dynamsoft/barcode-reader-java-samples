@@ -233,7 +233,7 @@ public class ImageDecoding {
 					for (int i = 0; i < results.length; i++) {
 						TextResult result = results[i];
 						
-						String barcodeFormat = result.barcodeFormat==0?result.barcodeFormatString_2:result.barcodeFormatString;
+						String barcodeFormat = result.barcodeFormatString;
 						System.out.println("Barcode " + i + ":" + barcodeFormat + ","+ result.barcodeText);
 					}
 				} else {
