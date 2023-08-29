@@ -50,12 +50,15 @@ public class AccuracyFirstSettings {
 			
 		    // 1.Initialize license.
             // The string "DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9" here is a free public trial license. Note that network connection is required for this license to work.
-            // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=java
+            // You can also request a 30-day trial license in the customer portal: https://www.dynamsoft.com/customer/license/trialLicense?architecture=dcv&product=dbr&utm_source=samples&package=java
 		    BarcodeReader.initLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9");
 			
 		    // 2.Create an instance of Dynamsoft Barcode Reader.
-		    BarcodeReader dbr = new BarcodeReader();
-		    
+		    BarcodeReader dbr = BarcodeReader.getInstance();
+			if(dbr == null)
+            {
+                throw new Exception("Get Instance Failed.");
+            }
 		    TextResult[] results = null;
 		    String fileName = "../../../images/AllSupportedBarcodeTypes.png";
 
@@ -85,8 +88,10 @@ public class AccuracyFirstSettings {
 		    	// 5.b Output the barcode format and barcode text.
 		    	outputResults(results);
 		    }
-		    
+		    dbr.recycle();
 		} catch (BarcodeReaderException ex) {
+			ex.printStackTrace();
+		}catch(Exception ex){
 			ex.printStackTrace();
 		}
 	}

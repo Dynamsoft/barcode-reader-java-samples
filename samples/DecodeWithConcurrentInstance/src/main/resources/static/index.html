@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    Upload Images for Decoding<input id="ipt-img" type="file" multiple accept="image/jpeg,image/png,image/bmp,image/gif,image/tiff,application/pdf">
+    <textarea id="ta-results" disabled style="width:calc(100vw - 10px);height:calc(100vh - 20px);display:block;overflow-y:auto;"></textarea>
+    <script>
+        let bDecoding = false;
+        document.getElementById("ipt-img").addEventListener('change', async function(){
+            if(bDecoding){ return; }else{ bDecoding = true; }
+            const taResults = document.getElementById("ta-results");
+            taResults.value = "";
+            try{
+                const files = this.files;
+                for(let i = 0; i < files.length; ++i){
+                    let file = files[i];
+                    let fd = new FormData();
+                    fd.append("image", file);
+                    let rep = await fetch('decode',{method:"POST",body:fd});
+                    if(!rep.ok){
+                        taResults.value += "Error when decode "+file.name+".\n\n";
+                        continue;
+                    }
+                    let obj = await rep.json();
+                    taResults.value += file.name+":\n";
+                    for(let j = 0; j < obj.length; ++j){
+                        let text = obj[j].barcodeText;
+                        taResults.value += text+"\n";
+                    }
+                }
+            }catch(ex){
+                taResults.value += ex.message;
+            }
+            this.value = "";
+            bDecoding = false;
+        });
+    </script>
+</body>
+</html>
