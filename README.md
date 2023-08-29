@@ -22,7 +22,6 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 | [`SpeedFirstSettings`](samples/Performance/SpeedFirstSettings) | This is a Java sample that shows how to configure Dynamsoft Barcode Reader to read barcodes as fast as possible. The downside is that read-rate and accuracy might be affected. |
 | [`ReadRateFirstSettings`](samples/Performance/ReadRateFirstSettings) | This is a Java sample that shows how to configure Dynamsoft Barcode Reader to read as many barcodes as possible at one time. The downside is that speed and accuracy might be affected. It is recommended to apply these configurations when decoding multiple barcodes from a single image. |
 | [`AccuracyFirstSettings`](samples/Performance/AccuracyFirstSettings)` | This is a Java sample that shows how to configure Dynamsoft Barcode Reader to read barcodes as accurately as possible. The downside is that speed and read-rate might be affected. It is recommended to apply these configurations when misreading is unbearable. |
-| [`DecodeWithConcurrentInstance`](samples/DecodeWithConcurrentInstance)` | This sample demonstrates how to decode barcodes in concurrent instance mode. |
 
 ## License
 
