@@ -31,7 +31,7 @@ public class ReadRateFirstSettings {
         // DeblurModes are all enabled as default. Barcode reader will automatically switch between the modes and try decoding continuously until timeout or the expected barcode count is reached.
         // Please manually update the enabled modes list or change the expected barcode count to promote the barcode scanning speed.
         //Read more about deblur mode members: https://www.dynamsoft.com/barcode-reader/parameters/enum/parameter-mode-enums.html#deblurmode
-        sts.deblurModes = new int[]{EnumDeblurMode.DM_DIRECT_BINARIZATION,EnumDeblurMode.DM_THRESHOLD_BINARIZATION,EnumDeblurMode.DM_GRAYE_EQULIZATION,
+        sts.deblurModes = new int[]{EnumDeblurMode.DM_DIRECT_BINARIZATION,EnumDeblurMode.DM_THRESHOLD_BINARIZATION,EnumDeblurMode.DM_GRAY_EQUALIZATION,
                 EnumDeblurMode.DM_SMOOTHING,EnumDeblurMode.DM_MORPHING,EnumDeblurMode.DM_DEEP_ANALYSIS,EnumDeblurMode.DM_SHARPENING,0,0,0};
 
         // Parameter 6. Set scale up modes.
