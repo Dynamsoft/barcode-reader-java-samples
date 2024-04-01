@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>com.dynamsoft</groupId>
 			<artifactId>dbr</artifactId>
-			<version>9.6.40</version>
+			<version>9.6.40.1</version>
 		</dependency>
 	</dependencies>
 
