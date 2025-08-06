@@ -1,10 +1,9 @@
 import com.dynamsoft.core.EnumErrorCode;
-import com.dynamsoft.core.EnumGrayscaleTransformationMode;
-import com.dynamsoft.core.basic_structures.Point;
-import com.dynamsoft.cvr.*;
+import com.dynamsoft.cvr.CaptureVisionException;
+import com.dynamsoft.cvr.CaptureVisionRouter;
+import com.dynamsoft.cvr.CapturedResult;
 import com.dynamsoft.dbr.BarcodeResultItem;
 import com.dynamsoft.dbr.DecodedBarcodesResult;
-import com.dynamsoft.dbr.EnumBarcodeFormat;
 import com.dynamsoft.license.LicenseError;
 import com.dynamsoft.license.LicenseException;
 import com.dynamsoft.license.LicenseManager;
@@ -12,12 +11,11 @@ import com.dynamsoft.license.LicenseManager;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-public class GeneralSettings {
+public class ReadDPMBarcode {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        try
-        {
+        try {
             int errorCode = 0;
             String errorMsg = "";
 
@@ -41,38 +39,21 @@ public class GeneralSettings {
             }
 
             CaptureVisionRouter cvRouter = new CaptureVisionRouter();
-            SimplifiedCaptureVisionSettings settings = null;
+            String templatePath = Paths.get(System.getProperty("user.dir"), "../../CustomTemplates/ReadDPM.json").normalize().toString();
 
             try {
-                settings = cvRouter.getSimplifiedSettings(EnumPresetTemplate.PT_READ_BARCODES);
+                cvRouter.initSettingsFromFile(templatePath);
             } catch (CaptureVisionException e) {
-                settings = new SimplifiedCaptureVisionSettings();
-            }
-
-            settings.barcodeSettings.barcodeFormatIds = EnumBarcodeFormat.BF_QR_CODE | EnumBarcodeFormat.BF_CODE_128;
-            settings.barcodeSettings.expectedBarcodesCount = 10;
-            settings.barcodeSettings.grayscaleTransformationModes[0] = EnumGrayscaleTransformationMode.GTM_AUTO;
-
-            settings.roiMeasuredInPercentage = 1;
-            Point[] points = settings.roi.points;
-            points[0].set(0, 0);
-            points[1].set(100, 0);
-            points[2].set(100, 100);
-            points[3].set(0, 100);
-
-            try {
-                cvRouter.updateSettings(EnumPresetTemplate.PT_READ_BARCODES, settings);
-            } catch (CaptureVisionException e) {
-                System.out.println("Update settings failed: ErrorCode: " + e.getErrorCode() + ", ErrorString: " + e.getErrorString());
+                System.out.println("Init template failed: " + e.getErrorCode());
                 return;
             }
 
-            String imagePath = Paths.get(System.getProperty("user.dir"), "../../images/GeneralBarcodes.png").normalize().toString();
+            String imagePath = Paths.get(System.getProperty("user.dir"), "../../images/DPM.png").normalize().toString();
 
-            CapturedResult[] results = cvRouter.captureMultiPages(imagePath, EnumPresetTemplate.PT_READ_BARCODES);
+            CapturedResult[] results = cvRouter.captureMultiPages(imagePath, "");
             if (results == null || results.length == 0) {
-                System.out.println("No Captured result.");
-            } else {
+                System.out.println("No barcode detected.");
+            } else  {
                 for (int index = 0; index < results.length; index++) {
                     CapturedResult result = results[index];
                     if (result.getErrorCode() == EnumErrorCode.EC_UNSUPPORTED_JSON_KEY_WARNING) {
@@ -97,8 +78,7 @@ public class GeneralSettings {
                     }
                 }
             }
-        }
-        finally {
+        } finally {
             System.out.print("Press Enter to quit...");
             scanner.nextLine();
             scanner.close();

@@ -4,25 +4,35 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 ## Requirements
 - Operating systems:
-  - Windows 7, 8, 10, 11
-  - Windows Server 2003, 2008, 2008 R2, 2012, 2016, 2019, 2022
-  - Linux x64 (Ubuntu 14.04.4+ LTS, Debian 8+, etc.)
+  - Windows Windows: Windows 8 and higher, or Windows Server 2012 and higher
+  - Linux x64 (Ubuntu 14.04.4+ LTS, Debian 8+, CentOS 7+, etc.)
   - Linux arm 64bit
-  - macOS x64 10.12+
-- JDK 1.7 and above
-- Environment: Eclipse 3.7 and above
+  - macOS universal 10.15+
+- JDK 1.8 and above
 
 ## Samples
 
 | Sample Name | Description |
 | ----------- | ----------- |
 | [`HelloWorld`](samples/HelloWorld) | This is a Java sample that illustrates the simplest way to recognize barcodes from images with Dynamsoft Barcode Reader SDK. |
-| [`GeneralSettings`](samples/GeneralSettings)` | This is a Java sample that illustrates how to make general settings (including barcode format/barcode count/scan region) when using Dynamsoft Barcode Reader. | 
-| [`ImageDecoding`](samples/ImageDecoding) | This is a Java sample that illustrates how to decode images in various format (including Base64/BufferedImage/file bytes/image buffer) when using Dynamsoft Barcode Reader. | 
-| [`SpeedFirstSettings`](samples/Performance/SpeedFirstSettings) | This is a Java sample that shows how to configure Dynamsoft Barcode Reader to read barcodes as fast as possible. The downside is that read-rate and accuracy might be affected. |
-| [`ReadRateFirstSettings`](samples/Performance/ReadRateFirstSettings) | This is a Java sample that shows how to configure Dynamsoft Barcode Reader to read as many barcodes as possible at one time. The downside is that speed and accuracy might be affected. It is recommended to apply these configurations when decoding multiple barcodes from a single image. |
-| [`AccuracyFirstSettings`](samples/Performance/AccuracyFirstSettings)` | This is a Java sample that shows how to configure Dynamsoft Barcode Reader to read barcodes as accurately as possible. The downside is that speed and read-rate might be affected. It is recommended to apply these configurations when misreading is unbearable. |
-| [`DecodeWithConcurrentInstance`](samples/DecodeWithConcurrentInstance)` | This sample demonstrates how to decode barcodes in concurrent instance mode. |
+| [`VideoDecoding`](Samples/VideoDecoding) | This sample demonstrates how to read barcodes from video frames. |
+| [`GeneralSettings`](Samples/GeneralSettings) | This sample demonstrates how to configure general used settings and read barcodes from an image file. |
+| [`ReadDPMBarcode`](Samples/ReadDPMBarcode) | This sample demonstrates how to read DPM (Direct Part Marking) barcodes and get barcode results. |
+| [`ParameterTuner`](Samples/ParameterTuner) | This sample demonstrates how to adjust and test different parameter settings to optimize barcode recognition performance. |
+| [`ShowLocalizedVSDecodedBarcodes`](Samples/ShowLocalizedVSDecodedBarcodes) | This sample demonstrates how to highlight successfully decoded and only-localized barcodes with different styles of rectangles. |
+
+### Additional Samples using Capture Vision SDK
+
+In addition to the classic barcode decoding samples listed above, the following samples go a step further by parsing the decoded results and showcasing more structured workflows.
+
+> [!IMPORTANT]
+> These samples use the `Dynamsoft Capture Vision` package instead of `Dynamsoft Barcode Reader`. If you're switching to these samples, make sure to [download](https://www.dynamsoft.com/capture-vision/confirmation/#desktop) and use the correct package.
+
+| Sample | Description |
+| --- | --- |
+| [`DriverLicenseScanner`](https://github.com/Dynamsoft/capture-vision-java-samples/blob/main/Samples/DriverLicenseScanner) | Shows how to capture and extract user's information from driver license/ID. |
+| [`VINScanner`](https://github.com/Dynamsoft/capture-vision-java-samples/blob/main/Samples/VINScanner) | Shows how to capture and extract vehicle's information from Vehicle Identification Number (VIN). |
+| [`GS1AIScanner`](https://github.com/Dynamsoft/capture-vision-java-samples/blob/main/Samples/GS1AIScanner) | Shows how to extract and interpret GS1 Application Identifiers (AIs) from GS1 barcodes. |
 
 ## License
 
@@ -30,9 +40,6 @@ The library requires a license to work, you use the API initLicense to initializ
 
 These samples use a free public trial license which require network connection to function. You can request a 30-day free trial license key from <a href="https://www.dynamsoft.com/customer/license/trialLicense?architecture=dcv&product=dbr&utm_source=samples&package=java" target="_blank">Customer Portal</a> which works offline.
 
-To run sample `DecodeWithConcurrentInstance`, please contact us at https://www.dynamsoft.com/company/contact/ to get a concurrent instance license first.
-
-For more information, please refer to https://www.dynamsoft.com/license-server/docs/about/licensefaq.html.
 
 ## Contact Us
 

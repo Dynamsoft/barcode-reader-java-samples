@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dynamsoft</groupId>
-    <artifactId>GeneralSettings</artifactId>
+    <artifactId>VideoDecoding</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <repositories>
@@ -21,6 +21,27 @@
             <artifactId>dbr</artifactId>
             <version>11.0.6000</version>
         </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacv-platform</artifactId>
+            <version>1.5.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>javacpp-platform</artifactId>
+            <version>1.5.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>ffmpeg-platform</artifactId>
+            <version>6.1.1-1.5.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bytedeco</groupId>
+            <artifactId>openblas</artifactId>
+            <version>0.3.26-1.5.10</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
