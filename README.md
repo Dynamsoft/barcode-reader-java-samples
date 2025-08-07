@@ -14,12 +14,12 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 
 | Sample Name | Description |
 | ----------- | ----------- |
-| [`HelloWorld`](samples/HelloWorld) | This is a Java sample that illustrates the simplest way to recognize barcodes from images with Dynamsoft Barcode Reader SDK. |
-| [`VideoDecoding`](samples/VideoDecoding) | This sample demonstrates how to read barcodes from video frames. |
-| [`GeneralSettings`](samples/GeneralSettings) | This sample demonstrates how to configure general used settings and read barcodes from an image file. |
-| [`ReadDPMBarcode`](samples/ReadDPMBarcode) | This sample demonstrates how to read DPM (Direct Part Marking) barcodes and get barcode results. |
-| [`ParameterTuner`](samples/ParameterTuner) | This sample demonstrates how to adjust and test different parameter settings to optimize barcode recognition performance. |
-| [`ShowLocalizedVSDecodedBarcodes`](samples/ShowLocalizedVSDecodedBarcodes) | This sample demonstrates how to highlight successfully decoded and only-localized barcodes with different styles of rectangles. |
+| [`HelloWorld`](Samples/HelloWorld) | This is a Java sample that illustrates the simplest way to recognize barcodes from images with Dynamsoft Barcode Reader SDK. |
+| [`VideoDecoding`](Samples/VideoDecoding) | This sample demonstrates how to read barcodes from video frames. |
+| [`GeneralSettings`](Samples/GeneralSettings) | This sample demonstrates how to configure general used settings and read barcodes from an image file. |
+| [`ReadDPMBarcode`](Samples/ReadDPMBarcode) | This sample demonstrates how to read DPM (Direct Part Marking) barcodes and get barcode results. |
+| [`ParameterTuner`](Samples/ParameterTuner) | This sample demonstrates how to adjust and test different parameter settings to optimize barcode recognition performance. |
+| [`ShowLocalizedVSDecodedBarcodes`](Samples/ShowLocalizedVSDecodedBarcodes) | This sample demonstrates how to highlight successfully decoded and only-localized barcodes with different styles of rectangles. |
 
 ### Additional Samples using Capture Vision SDK
 
