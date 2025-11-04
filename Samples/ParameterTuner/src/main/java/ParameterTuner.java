@@ -1,4 +1,6 @@
 import com.dynamsoft.core.EnumErrorCode;
+import com.dynamsoft.core.basic_structures.FileImageTag;
+import com.dynamsoft.core.basic_structures.ImageTag;
 import com.dynamsoft.cvr.CaptureVisionError;
 import com.dynamsoft.cvr.CaptureVisionException;
 import com.dynamsoft.cvr.CaptureVisionRouter;
@@ -235,12 +237,15 @@ public class ParameterTuner {
                             System.out.println("Error: " + result.getErrorCode() + ", " + result.getErrorString());
                         }
 
+                        ImageTag tag = result.getOriginalImageTag();
+                        int pageNumber = tag instanceof FileImageTag ? ((FileImageTag)tag).getPageNumber() : index;
+
                         DecodedBarcodesResult barcodeResult = result.getDecodedBarcodesResult();
                         BarcodeResultItem[] items = barcodeResult != null ? barcodeResult.getItems() : null;
                         if (items == null || items.length == 0) {
-                            System.out.println("Page-" + (index + 1) + " No barcode found.");
+                            System.out.println("Page-" + (pageNumber + 1) + " No barcode found.");
                         } else {
-                            System.out.println("Page-" + (index + 1) + " Decoded " + items.length + " barcodes:");
+                            System.out.println("Page-" + (pageNumber + 1) + " Decoded " + items.length + " barcodes:");
                             for (int i = 0; i < items.length; i++) {
                                 System.out.println("Result " + (i + 1));
                                 System.out.println("Barcode Format: " + items[i].getFormatString());

@@ -1,5 +1,7 @@
 import com.dynamsoft.core.EnumErrorCode;
 import com.dynamsoft.core.EnumGrayscaleTransformationMode;
+import com.dynamsoft.core.basic_structures.FileImageTag;
+import com.dynamsoft.core.basic_structures.ImageTag;
 import com.dynamsoft.core.basic_structures.Point;
 import com.dynamsoft.cvr.*;
 import com.dynamsoft.dbr.BarcodeResultItem;
@@ -81,12 +83,15 @@ public class GeneralSettings {
                         System.out.println("Error: " + result.getErrorCode() + ", " + result.getErrorString());
                     }
 
+                    ImageTag tag = result.getOriginalImageTag();
+                    int pageNumber = tag instanceof FileImageTag ? ((FileImageTag)tag).getPageNumber() : index;
+
                     DecodedBarcodesResult barcodeResult = result != null ? result.getDecodedBarcodesResult() : null;
                     BarcodeResultItem[] items = barcodeResult != null ? barcodeResult.getItems() : null;
                     if (items == null || items.length == 0) {
-                        System.out.println("Page-" + (index + 1) + " No barcode detected.");
+                        System.out.println("Page-" + (pageNumber + 1) + " No barcode detected.");
                     } else {
-                        System.out.println("Page-" + (index + 1) + " Decoded " + items.length + " barcodes.");
+                        System.out.println("Page-" + (pageNumber + 1) + " Decoded " + items.length + " barcodes.");
                         for (int i = 0; i < items.length; i++) {
                             BarcodeResultItem item = items[i];
                             System.out.println();

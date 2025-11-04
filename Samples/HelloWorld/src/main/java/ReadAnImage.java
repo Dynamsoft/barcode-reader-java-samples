@@ -1,4 +1,6 @@
 import com.dynamsoft.core.EnumErrorCode;
+import com.dynamsoft.core.basic_structures.FileImageTag;
+import com.dynamsoft.core.basic_structures.ImageTag;
 import com.dynamsoft.cvr.CaptureVisionRouter;
 import com.dynamsoft.cvr.CapturedResult;
 import com.dynamsoft.cvr.EnumPresetTemplate;
@@ -50,12 +52,15 @@ public class ReadAnImage {
                         System.out.println("Error: " + result.getErrorCode() + ", " + result.getErrorString());
                     }
 
+                    ImageTag tag = result.getOriginalImageTag();
+                    int pageNumber = tag instanceof FileImageTag ? ((FileImageTag)tag).getPageNumber() : index;
+
                     DecodedBarcodesResult barcodeResult = result != null ? result.getDecodedBarcodesResult() : null;
                     BarcodeResultItem[] items = barcodeResult != null ? barcodeResult.getItems() : null;
                     if (items == null || items.length == 0) {
-                        System.out.println("Page-" + (index + 1) + " No barcode detected.");
+                        System.out.println("Page-" + (pageNumber + 1) + " No barcode detected.");
                     } else {
-                        System.out.println("Page-" + (index + 1) + " Decoded " + items.length + " barcodes.");
+                        System.out.println("Page-" + (pageNumber + 1) + " Decoded " + items.length + " barcodes.");
                         for (int i = 0; i < items.length; i++) {
                             BarcodeResultItem item = items[i];
                             System.out.println();

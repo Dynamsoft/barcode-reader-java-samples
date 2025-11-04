@@ -1,4 +1,9 @@
+import java.nio.file.Paths;
+import java.util.Scanner;
+
 import com.dynamsoft.core.EnumErrorCode;
+import com.dynamsoft.core.basic_structures.FileImageTag;
+import com.dynamsoft.core.basic_structures.ImageTag;
 import com.dynamsoft.cvr.CaptureVisionException;
 import com.dynamsoft.cvr.CaptureVisionRouter;
 import com.dynamsoft.cvr.CapturedResult;
@@ -7,9 +12,6 @@ import com.dynamsoft.dbr.DecodedBarcodesResult;
 import com.dynamsoft.license.LicenseError;
 import com.dynamsoft.license.LicenseException;
 import com.dynamsoft.license.LicenseManager;
-
-import java.nio.file.Paths;
-import java.util.Scanner;
 
 public class ReadDPMBarcode {
     public static void main(String[] args) {
@@ -62,12 +64,15 @@ public class ReadDPMBarcode {
                         System.out.println("Error: " + result.getErrorCode() + ", " + result.getErrorString());
                     }
 
-                    DecodedBarcodesResult barcodeResult = result != null ? result.getDecodedBarcodesResult() : null;
+                    ImageTag tag = result.getOriginalImageTag();
+                    int pageNumber = tag instanceof FileImageTag ? ((FileImageTag)tag).getPageNumber() : index;
+
+                    DecodedBarcodesResult barcodeResult = result.getDecodedBarcodesResult();
                     BarcodeResultItem[] items = barcodeResult != null ? barcodeResult.getItems() : null;
                     if (items == null || items.length == 0) {
-                        System.out.println("Page-" + (index + 1) + " No barcode detected.");
+                        System.out.println("Page-" + (pageNumber + 1) + " No barcode detected.");
                     } else {
-                        System.out.println("Page-" + (index + 1) + " Decoded " + items.length + " barcodes.");
+                        System.out.println("Page-" + (pageNumber + 1) + " Decoded " + items.length + " barcodes.");
                         for (int i = 0; i < items.length; i++) {
                             BarcodeResultItem item = items[i];
                             System.out.println();
