@@ -141,7 +141,7 @@ public class ShowLocalizedVSDecodedBarcodes {
             IntermediateResultManager irm = cvRouter.getIntermediateResultManager();
             MyIntermediateResultReceiver irr = new MyIntermediateResultReceiver();
             try {
-                irm.AddResultReceiver(irr);
+                irm.addResultReceiver(irr);
             } catch (CaptureVisionException e) {
             }
 
