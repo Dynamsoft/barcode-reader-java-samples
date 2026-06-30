@@ -17,7 +17,7 @@
         <dependency>
             <groupId>com.dynamsoft</groupId>
             <artifactId>dbr</artifactId>
-            <version>11.4.2001</version>
+            <version>11.4.3000</version>
         </dependency>
         <dependency>
             <groupId>org.bytedeco</groupId>
