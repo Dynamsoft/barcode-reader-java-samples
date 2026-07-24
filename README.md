@@ -2,12 +2,28 @@
 
 This repository contains multiple samples that demonstrates how to use the [Dynamsoft Barcode Reader](https://www.dynamsoft.com/barcode-reader/overview/) Java Edition.
 
-## Requirements
-- Operating systems:
-  - Windows Windows: Windows 8 and higher, or Windows Server 2012 and higher
-  - Linux x64 (Ubuntu 14.04.4+ LTS, Debian 8+, CentOS 7+, etc.)
-  - Linux arm 64bit
-  - macOS universal 10.15+
+## System Requirements
+
+### Supported Platforms
+
+**Windows**
+- Supported Versions: Windows 8 and higher, or Windows Server 2012 and higher
+- Architectures: x64, x86
+
+**Linux**
+- **x64**
+	- Supported Distributions: Ubuntu 16.04+ LTS, Debian 8+, CentOS 7+
+	- Dependencies: glibc 2.17
+- **ARM64**
+	- Supported Distributions: Ubuntu 18.04+ LTS, Debian 10+, CentOS/RHEL 8+
+	- Dependencies: glibc 2.27
+
+**macOS**
+- Supported Versions: macOS 12 (Monterey) and higher
+- Architectures: universal (x64, Apple Silicon)
+
+### Runtime Environment
+
 - JDK 1.8 and above
 
 ## Samples
@@ -15,11 +31,12 @@ This repository contains multiple samples that demonstrates how to use the [Dyna
 | Sample Name | Description |
 | ----------- | ----------- |
 | [`HelloWorld`](Samples/HelloWorld) | This is a Java sample that illustrates the simplest way to recognize barcodes from images with Dynamsoft Barcode Reader SDK. |
-| [`VideoDecoding`](Samples/VideoDecoding) | This sample demonstrates how to read barcodes from video frames. |
 | [`GeneralSettings`](Samples/GeneralSettings) | This sample demonstrates how to configure general used settings and read barcodes from an image file. |
-| [`ReadDPMBarcode`](Samples/ReadDPMBarcode) | This sample demonstrates how to read DPM (Direct Part Marking) barcodes and get barcode results. |
+| [`GridBarcodeScanner`](Samples/GridBarcodeScanner) | This sample demonstrates a multi-phase pipeline for decoding a large barcode grid from a single image, maximizing the decode rate with low latency. |
 | [`ParameterTuner`](Samples/ParameterTuner) | This sample demonstrates how to adjust and test different parameter settings to optimize barcode recognition performance. |
+| [`ReadDPMBarcode`](Samples/ReadDPMBarcode) | This sample demonstrates how to read DPM (Direct Part Marking) barcodes and get barcode results. |
 | [`ShowLocalizedVSDecodedBarcodes`](Samples/ShowLocalizedVSDecodedBarcodes) | This sample demonstrates how to highlight successfully decoded and only-localized barcodes with different styles of rectangles. |
+| [`VideoDecoding`](Samples/VideoDecoding) | This sample demonstrates how to read barcodes from video frames. |
 
 ### Additional Samples using Capture Vision SDK
 
