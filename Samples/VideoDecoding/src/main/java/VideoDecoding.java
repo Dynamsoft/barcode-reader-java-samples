@@ -1,4 +1,23 @@
-import com.dynamsoft.core.*;
+import java.awt.GraphicsEnvironment;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
+import org.bytedeco.ffmpeg.global.avutil;
+import org.bytedeco.javacv.CanvasFrame;
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.Frame;
+import org.bytedeco.javacv.OpenCVFrameConverter;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_videoio.VideoCapture;
+
+import com.dynamsoft.core.EnumBufferOverflowProtectionMode;
+import com.dynamsoft.core.EnumCapturedResultItemType;
+import com.dynamsoft.core.EnumColourChannelUsageType;
+import com.dynamsoft.core.EnumErrorCode;
+import com.dynamsoft.core.EnumImagePixelFormat;
 import com.dynamsoft.core.basic_structures.FileImageTag;
 import com.dynamsoft.core.basic_structures.ImageData;
 import com.dynamsoft.core.basic_structures.ImageSourceAdapter;
@@ -13,23 +32,6 @@ import com.dynamsoft.license.LicenseError;
 import com.dynamsoft.license.LicenseException;
 import com.dynamsoft.license.LicenseManager;
 import com.dynamsoft.utility.MultiFrameResultCrossFilter;
-
-import org.bytedeco.ffmpeg.global.avutil;
-import org.bytedeco.javacv.FFmpegFrameGrabber;
-import org.bytedeco.javacv.Frame;
-import org.bytedeco.javacv.OpenCVFrameConverter;
-import org.bytedeco.opencv.opencv_core.Mat;
-import org.bytedeco.opencv.opencv_videoio.VideoCapture;
-
-import java.awt.GraphicsEnvironment;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Scanner;
-
-import org.bytedeco.javacv.CanvasFrame;
-import static org.bytedeco.opencv.global.opencv_highgui.*;
 
 class MyCapturedResultReceiver extends CapturedResultReceiver {
 
@@ -212,25 +214,17 @@ public class VideoDecoding {
         System.out.println("-------------------start------------------------");
 
         try {
-            int errorCode = 0;
-            String errorMsg = "";
-
             // Initialize license.
             // You can request and extend a trial license from https://www.dynamsoft.com/customer/license/trialLicense?product=dbr&utm_source=samples&package=java
             // The string 'DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9' here is a free public trial license. Note that network connection is required for this license to work.
             try {
                 LicenseError licenseError = LicenseManager.initLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9");
-                if (licenseError.getErrorCode() != EnumErrorCode.EC_OK) {
-                    errorCode = licenseError.getErrorCode();
-                    errorMsg = licenseError.getErrorString();
+                if (licenseError.getErrorCode() == EnumErrorCode.EC_LICENSE_WARNING) {
+                    System.out.println("License initialization warning: " + licenseError.getErrorString());
                 }
             } catch (LicenseException e) {
-                errorCode = e.getErrorCode();
-                errorMsg = e.getErrorString();
-            }
-
-            if (errorCode != EnumErrorCode.EC_OK) {
-                System.out.println("License initialization failed: ErrorCode: " + errorCode + ", ErrorString: " + errorMsg);
+                System.out.println("License initialization failed: ErrorCode: " + e.getErrorCode() + ", ErrorString: "
+                        + e.getErrorString());
                 return;
             }
 

@@ -865,27 +865,16 @@ public class GridBarcodeScanner {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        int errorCode = 0;
-        String errorMsg = "";
-
         // Initialize license.
         // You can request and extend a trial license from https://www.dynamsoft.com/customer/license/trialLicense?product=dcv&utm_source=samples&package=java
         // The string 'DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9' here is a free public trial license. Note that network connection is required for this license to work.
         try {
             LicenseError licenseError = LicenseManager.initLicense("DLS2eyJvcmdhbml6YXRpb25JRCI6IjIwMDAwMSJ9");
-            if (licenseError.getErrorCode() != EnumErrorCode.EC_OK) {
-                errorCode = licenseError.getErrorCode();
-                errorMsg = licenseError.getErrorString();
+            if (licenseError.getErrorCode() == EnumErrorCode.EC_LICENSE_WARNING) {
+                System.out.println("License initialization warning: " + licenseError.getErrorString());
             }
         } catch (LicenseException e) {
-            errorCode = e.getErrorCode();
-            errorMsg = e.getErrorString();
-        }
-
-        if (errorCode != EnumErrorCode.EC_OK) {
-            System.out.println("License initialization failed: ErrorCode: " + errorCode
-                    + ", ErrorString: " + errorMsg);
+            System.out.println("License initialization failed: ErrorCode: " + e.getErrorCode() + ", ErrorString: " + e.getErrorString());
             return;
         }
 
